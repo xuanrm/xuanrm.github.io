@@ -100,14 +100,14 @@ th {
   color:#444;
 }
 
-img {
+img-cir {
   max-width:100%;
   border-radius: 50%;
 }
 
-img-pdf {
+img {
   max-width:100%;
-  border-radius: 50%;
+  border-radius: 0%;
 }
 
 header {
