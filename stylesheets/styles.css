@@ -105,6 +105,11 @@ img {
   border-radius: 50%;
 }
 
+img-pdf {
+  max-width:100%;
+  border-radius: 50%;
+}
+
 header {
   width:270px;
   float:left;
