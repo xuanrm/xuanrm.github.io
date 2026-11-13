@@ -147,6 +147,15 @@
   .edu-list .degree { font-weight: 600; color: var(--ink); }
 
   /* ===== News ===== */
+  .news-year-heading {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 20px 0 10px;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .news-year-heading:first-of-type { margin-top: 0; }
   .news-list { list-style: none; }
   .news-list li {
     display: flex;
@@ -285,8 +294,7 @@
       <div class="research">Research interests: Wireless Charging, Internet of Things, and wireless sensor networks</div>
       <div class="contact-row">
         <a href="mailto:meixuanren@smail.nju.edu.cn"><i class="fa fa-envelope"></i> Email</a>
-        <a href="#"><i class="https://scholar.google.com/citations?user=DdBBxL0AAAAJ&hl=zh-CN"></i> Google Scholar</a>
-    /*    <a href="#"><i class="ai ai-dblp"></i> DBLP</a> */
+        <a href="https://scholar.google.com/citations?user=DdBBxL0AAAAJ&hl=zh-CN" target="_blank"><i class="fa fa-google"></i> Google Scholar</a>
       </div>
     </div>
   </header>
@@ -307,25 +315,34 @@
   <!-- ===== News ===== -->
   <section id="news">
     <h2>News</h2>
-    <div class="news-group">
-      <span class="news-year">2026</span>
-      <ul>
-        <li>Our paper <em>"Environment-Aware Mobile Charging with Attenuation Effects"</em> has been accepted by INFOCOM 2026.</li>
-        <li>Our survey <em>"Understanding Wireless Charger Networks"</em> is published in IEEE COMST (IF: 34.4).</li>
-      </ul>
-    </div>
-    <div class="news-group">
-      <span class="news-year">2025</span>
-      <ul>
-        <li>Our journal extension <em>"Adaptive Charging with Beam Steering"</em> is published in IEEE TMC.</li>
-      </ul>
-    </div>
-    <div class="news-group">
-      <span class="news-year">2024</span>
-      <ul>
-        <li>I was supported by the Postgraduate Research & Practice Innovation Program of Jiangsu Province (KYCX24_0234).</li>
-      </ul>
-    </div>
+
+    <h3 class="news-year-heading">2026</h3>
+    <ul class="news-list">
+      <li>
+        <span class="date">Mar</span>
+        <span class="content">Our paper <em>"Environment-Aware Mobile Charging with Attenuation Effects"</em> has been accepted by INFOCOM 2026.</span>
+      </li>
+      <li>
+        <span class="date">Feb</span>
+        <span class="content">Our survey <em>"Understanding Wireless Charger Networks"</em> is published in IEEE COMST (IF: 34.4).</span>
+      </li>
+    </ul>
+
+    <h3 class="news-year-heading">2025</h3>
+    <ul class="news-list">
+      <li>
+        <span class="date">Oct</span>
+        <span class="content">Our journal extension <em>"Adaptive Charging with Beam Steering"</em> is published in IEEE TMC.</span>
+      </li>
+    </ul>
+
+    <h3 class="news-year-heading">2024</h3>
+    <ul class="news-list">
+      <li>
+        <span class="date">Apr</span>
+        <span class="content">I was supported by the Postgraduate Research & Practice Innovation Program of Jiangsu Province (KYCX24_0234).</span>
+      </li>
+    </ul>
   </section>
 
   <!-- ===== Publications ===== -->
@@ -441,7 +458,6 @@
       </li>
     </ul>
   </section>
-
 
 </div>
 </body>
