@@ -158,23 +158,17 @@
   .news-year-heading:first-of-type { margin-top: 0; }
   .news-list { list-style: none; }
   .news-list li {
-    display: flex;
-    gap: 14px;
+    position: relative;
+    padding-left: 18px;
     margin-bottom: 10px;
-    align-items: baseline;
+    color: var(--ink-soft);
   }
-  .news-list .date {
-    flex-shrink: 0;
-    font-family: "Consolas", monospace;
-    font-size: 13px;
+  .news-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
     color: var(--accent);
-    background: #eef3fa;
-    padding: 1px 8px;
-    border-radius: 3px;
-    min-width: 78px;
-    text-align: center;
   }
-  .news-list .content { color: var(--ink-soft); }
 
   /* ===== Publications ===== */
   .pub-group { margin-bottom: 20px; }
@@ -276,7 +270,6 @@
     header { flex-direction: column; align-items: center; text-align: center; }
     .contact-row { justify-content: center; }
     .header-info h1 { font-size: 24px; }
-    .news-list li { flex-direction: column; gap: 4px; }
   }
 </style>
 </head>
@@ -318,30 +311,18 @@
 
     <h3 class="news-year-heading">2026</h3>
     <ul class="news-list">
-      <li>
-        <span class="date">Mar</span>
-        <span class="content">Our paper <em>"Environment-Aware Mobile Charging with Attenuation Effects"</em> has been accepted by INFOCOM 2026.</span>
-      </li>
-      <li>
-        <span class="date">Feb</span>
-        <span class="content">Our survey <em>"Understanding Wireless Charger Networks"</em> is published in IEEE COMST (IF: 34.4).</span>
-      </li>
+      <li>Our paper <em>"Environment-Aware Mobile Charging with Attenuation Effects"</em> has been accepted by INFOCOM 2026.</li>
+      <li>Our survey <em>"Understanding Wireless Charger Networks"</em> is published in IEEE COMST (IF: 34.4).</li>
     </ul>
 
     <h3 class="news-year-heading">2025</h3>
     <ul class="news-list">
-      <li>
-        <span class="date">Oct</span>
-        <span class="content">Our journal extension <em>"Adaptive Charging with Beam Steering"</em> is published in IEEE TMC.</span>
-      </li>
+      <li>Our journal extension <em>"Adaptive Charging with Beam Steering"</em> is published in IEEE TMC.</li>
     </ul>
 
     <h3 class="news-year-heading">2024</h3>
     <ul class="news-list">
-      <li>
-        <span class="date">Apr</span>
-        <span class="content">I was supported by the Postgraduate Research & Practice Innovation Program of Jiangsu Province (KYCX24_0234).</span>
-      </li>
+      <li>I was supported by the Postgraduate Research &amp; Practice Innovation Program of Jiangsu Province (KYCX24_0234).</li>
     </ul>
   </section>
 
