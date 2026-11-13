@@ -1,126 +1,443 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-  <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Meixuan Ren's homepage</title>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meixuan Ren's Homepage</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #6b6b6b;
+    --accent: #1a3a6b;
+    --accent-light: #2c5aa0;
+    --rule: #e3e3e3;
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --tag-a: #b22222;
+    --tag-b: #1a6b3a;
+    --tag-c: #8a6d1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Georgia", "Times New Roman", "Songti SC", serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  /* ===== Header ===== */
+  header {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    flex-shrink: 0;
+  }
+  .header-info { flex: 1; min-width: 260px; }
+  .header-info h1 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .header-info .name-cn {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 22px;
+    margin-left: 6px;
+  }
+  .header-info .affil {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .header-info .affil a { color: var(--accent-light); text-decoration: none; }
+  .header-info .affil a:hover { text-decoration: underline; }
+  .header-info .research {
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 8px;
+  }
+  .contact-row {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 15px;
+  }
+  .contact-row a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.15s;
+  }
+  .contact-row a:hover { color: var(--accent); }
+  .contact-row i { font-size: 17px; }
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  /* ===== Sections ===== */
+  section { margin-bottom: 36px; }
+  h2 {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+    letter-spacing: 0.3px;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 18px 0 10px;
+  }
+  p { margin-bottom: 10px; color: var(--ink-soft); }
+  a { color: var(--accent-light); }
 
-      ga('create', 'UA-29643011-3', 'auto');
-      ga('send', 'pageview');
-    </script>
+  /* ===== Bio / Education ===== */
+  .bio p { text-align: justify; }
+  .edu-list { list-style: none; }
+  .edu-list li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 12px;
+    color: var(--ink-soft);
+  }
+  .edu-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 10px;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .edu-list .year {
+    display: inline-block;
+    min-width: 110px;
+    color: var(--muted);
+    font-family: "Consolas", monospace;
+    font-size: 14px;
+  }
+  .edu-list .degree { font-weight: 600; color: var(--ink); }
 
-    <!-- New GA4 tracking code, see https://support.google.com/analytics/answer/10271001#analyticsjs-enable-basic --> 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNJD50R0Z7"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GNJD50R0Z7');
-    </script>
+  /* ===== News ===== */
+  .news-list { list-style: none; }
+  .news-list li {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+    align-items: baseline;
+  }
+  .news-list .date {
+    flex-shrink: 0;
+    font-family: "Consolas", monospace;
+    font-size: 13px;
+    color: var(--accent);
+    background: #eef3fa;
+    padding: 1px 8px;
+    border-radius: 3px;
+    min-width: 78px;
+    text-align: center;
+  }
+  .news-list .content { color: var(--ink-soft); }
 
-    <!-- For all browsers -->
-    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
-    <link rel="stylesheet" href="assets/css/academicons.css"/>
+  /* ===== Publications ===== */
+  .pub-group { margin-bottom: 20px; }
+  .pub-group > .group-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .pub-list { list-style: none; counter-reset: pub; }
+  .pub-list li {
+    counter-increment: pub;
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 14px;
+    text-align: justify;
+  }
+  .pub-list li::before {
+    content: "[" counter(pub) "]";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: "Consolas", monospace;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .pub-list .title {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .pub-list .authors { color: var(--ink-soft); }
+  .pub-list .venue {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .pub-list .me { font-weight: 700; color: var(--ink); }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.3px;
+  }
+  .tag-a { background: #fde8e8; color: var(--tag-a); }
+  .tag-b { background: #e6f4ea; color: var(--tag-b); }
+  .tag-c { background: #fdf6e0; color: var(--tag-c); }
+  .tag-if { background: #eef3fa; color: var(--accent); }
+  .pub-links {
+    margin-top: 3px;
+    font-size: 13px;
+  }
+  .pub-links a {
+    margin-right: 10px;
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .pub-links a:hover { text-decoration: underline; }
 
-    <style>
-      button.accordion {
-      font:24px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      cursor: pointer;
-      padding: 0px;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 100%;
-      transition: 0.3s;
-      background-color: #f8f8f8;
-      }
-      button.accordion.active, button.accordion:hover {
-      background-color: #f8f8f8;
-      }
-      button.accordion:after {
-      content: " [+] ";
-      font-size: 90%;
-      color:#777;
-      float: left;
-      margin-left: 1px;
-      }
+  /* ===== Honors / Service / Projects ===== */
+  .simple-list { list-style: none; }
+  .simple-list li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 8px;
+    color: var(--ink-soft);
+  }
+  .simple-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+  .simple-list .year {
+    font-family: "Consolas", monospace;
+    font-size: 13px;
+    color: var(--muted);
+    margin-right: 8px;
+  }
 
-      button.accordion.active:after {
-      content: " [\2212] ";
-      }
-      div.panel {
-      padding: 0 20px;
-      margin-top: 5px;
-      display: none;
-      background-color: white;
-      font-size: 100%;
-      }
-      div.panel.show {
-      display: block !important;
-      }
-      .social-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-    </style>
-  </head>
-  <body>
-      <div class="wrapper">
-          <header style="
-          position: relative;
-          right: 20px; ">
-          <img src="rmx.png" height="200" width="200" alt="Meixuan Ren">
-          <h1>Meixuan Ren（任美璇）</h1>
-          <p>Ph.D. Student<br>Nanjing University<br>Department of Computer Science and Technology</p>
-          <b>Research Interests</b><p>Wireless charging networks, wireless networks<p>
-      </header>
-        <section>
-            <h3>Biography</h3>
-            <hr>
-            <ul><li>2023.09-Present: Ph.D., Department of Computer Science and Technology, Nanjing University, Nanjing, Jiangsu, China.
-            <br>Supervisor: Professor <a href="http://cs.nju.edu.cn/daihp/">Haipeng Dai</a>.
-            <li>2020.09-2023.06: M.E., Department of Computer Science and Technology, Sichuan Normal University, Chengdu, Sichuan, China. Supervisor: Professor <a href="https://cs.sicnu.edu.cn/_wx/_wx_home_news_i.aspx?iid=637286054938012864">Tang Liu</a>. </li>
-            <li>2016.09-2020.06: B.E., School of Mathematical Sciences, Sichuan Normal University, Chengdu, Sichuan, China.
-            </li>
-            </ul>
-            <h3>Publications</h3>
-            <hr>
-            <b>Conference Papers</b>
-            <ol><li>[<font color="#CE4337">INFOCOM’26</font>] <b>Meixuan Ren</b>, Tang Liu, Xiaoyu Wang, Zhao Li, and Aixin Jin. "Environment-Aware Mobile Charging with Attenuation Effects." In <i>Proceedings of the 45th Annual IEEE International Conference on Computer Communications (INFOCOM)</i>, IEEE, 2026. (CCF-A).</li>
-                <li>[<font color="#CE4337">INFOCOM’23</font>] <b>Meixuan Ren</b>, Dié Wu, Jing Xue, Wenzheng Xu, Jian Peng, and Tang Liu. "Utilizing the Neglected Back Lobe for Mobile Charging." In <i>Proceedings of the 42nd Annual IEEE International Conference on Computer Communications (INFOCOM)</i>, IEEE, 2023. (CCF-A).</li>
-                <li>[<font color="#CE4337">INFOCOM’23</font>] Yuzhuo Ma, Dié Wu, <b>Meixuan Ren</b>, Jian Peng, Jilin Yang, and Tang Liu. "Concurrent Charging with Wave Interference." In <i>Proceedings of the 42nd Annual IEEE International Conference on Computer Communications (INFOCOM)</i>, IEEE, 2023. (CCF-A). </li>
-                <li>[<font color="#CE4337">WASA’24</font>] Sujin Hou, Peng Deng, <b>Meixuan Ren</b>, Yun Xu, Yuzhang Zhu, Haipeng Dai and Libing Wu. "Hybrid Heterogeneous Wireless Chargers Placement". In <i>Proceedings of the 18th International Conference on Wireless Artificial Intelligent Computing Systems and Applications (WASA)</i>, Springer, 2024. (CCF-C).</li>
-            </ol>
-            <b>Journal Articles</b>
-            <ol> <li>[<font color="#CE4337">TMC’26</font>] Aixin Jin#, <b>Meixuan Ren#</b>, Yanyan Zhu, Dié Wu, Yuhang Zhi, Jian Peng, Tang Liu, and Hongyi Wu. "Self Evolving Mobile Charging Scheduling". <i>IEEE Transactions on Mobile Computing</i>, 2026,  published online. (CCF-A).</li>
-                <li>[<font color="#CE4337">TMC’25</font>] <b>Meixuan Ren</b>, Haipeng Dai, Linglin Zhang, and Tang Liu. "Adaptive Charging with Beam Steering". <i>IEEE Transactions on Mobile Computing</i>, 2025, 24(10): 11224-11240. (CCF-A).</li>
-                <li>[<font color="#CE4337">COMST’25</font>] <b>Meixuan Ren</b>, Haipeng Dai, Tang Liu, Xianjun Deng, Wanchun Dou, Yuanyuan Yang and Guihai Chen. "Understanding Wireless Charger Networks: Concepts, Current Research, and Future Directions". <i>IEEE Communications Surveys and Tutorials</i>, 2025, 27(4): 2247-2282. (SCI 1区, IF: 34.4). </li>
-                <li>[<font color="#CE4337">TMC’26</font>] Linglin Zhang, <b>Meixuan Ren</b>, Yanyan Zhu, Dié Wu, Jian Peng, Wenzheng Xu, and Tang Liu. "3D Mobile Charging with Planar Phased Array". <i>IEEE Transactions on Mobile Computing</i>, 2026, to appear. (CCF-A).</li>
-                <li>[<font color="#CE4337">TMC’24</font>] Tang Liu, <b>Meixuan Ren</b>, Dié Wu, Jing Xue, Jingwen Li, Sun Mao, and Wenzheng Xu. "Utilizing the Neglected Back Lobe for Directional Charging Scheduling". <i>IEEE Transactions on Mobile Computing</i>, 2024, 23(6): 7408-7421. (CCF-A).</li>
-                <li>[<font color="#CE4337">TON’24</font>] Tang Liu, Yuzhuo Ma, <b>Meixuan Ren</b>, Jin Yang, Jian Peng, J. Yang, and Dié Wu. "Concurrent Charging With Wave Interference for Multiple Chargers". <i>IEEE/ACM Transactions on Networking</i>, 2024, 32(3): 2525-2538. (CCF-A).</li>
-                <li>[<font color="#CE4337">TOSN’23</font>] Wei You, <b>Meixuan Ren</b>, Yuzhuo Ma, Dié Wu, Jilin Yang, Xuxun Liu, and Tang Liu. "Practical Charger Placement Scheme for Wireless Rechargeable Sensor Networks with Obstacles". <i>ACM Transactions on Sensor Networks</i>, 2023, 20(1): 1-23. (CCF-B).</li>
-                <li> <b>Meixuan Ren</b>, Peng Deng, Yue Zhao, Xiaoyu Wang, Chao Wang, Haipeng Dai, and Libing Wu. Safe Placement of Multi-antenna Wireless Chargers. Computer Science, 2024, 51(8): 360-368.</li>
-            </ol>
-            <h3>Projects</h3>                
-            <hr>
-            <li> Postgraduate Research & Practice Innovation Program of Jiangsu Province (KYCX24_0234).</li>
-          </section>
+  /* ===== Footer ===== */
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .container { padding: 28px 18px 48px; }
+    header { flex-direction: column; align-items: center; text-align: center; }
+    .contact-row { justify-content: center; }
+    .header-info h1 { font-size: 24px; }
+    .news-list li { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== Header ===== -->
+  <header>
+    <img src="rmx.png" alt="Meixuan Ren" class="photo">
+    <div class="header-info">
+      <h1>Meixuan Ren<span class="name-cn">任美璇</span></h1>
+      <div class="affil">Ph.D. Candidate, Department of Computer Science and Technology</div>
+      <div class="affil"><a href="https://www.nju.edu.cn" target="_blank">Nanjing University</a>, Nanjing, China</div>
+      <div class="affil">Advisor: Prof. <a href="http://cs.nju.edu.cn/daihp/" target="_blank">Haipeng Dai</a></div>
+      <div class="research">Research interests: Wireless Charging Networks, Wireless Networks</div>
+      <div class="contact-row">
+        <a href="mailto:renmx@smail.nju.edu.cn"><i class="fa fa-envelope"></i> Email</a>
+        <a href="#"><i class="ai ai-google-scholar"></i> Google Scholar</a>
+        <a href="#"><i class="ai ai-dblp"></i> DBLP</a>
+        <a href="#"><i class="fa fa-github"></i> GitHub</a>
+        <a href="#"><i class="ai ai-cv"></i> CV</a>
       </div>
-    <script src="javascripts/scale.fix.js"></script>
-  </body>
+    </div>
+  </header>
+
+  <!-- ===== Biography ===== -->
+  <section class="bio" id="about">
+    <h2>Biography</h2>
+    <p>
+      I am a Ph.D. candidate in the Department of Computer Science and Technology at
+      <a href="https://www.nju.edu.cn" target="_blank">Nanjing University</a>, advised by
+      Prof. <a href="http://cs.nju.edu.cn/daihp/" target="_blank">Haipeng Dai</a>. I received
+      my M.E. degree from Sichuan Normal University in 2023 under the supervision of
+      Prof. <a href="https://cs.sicnu.edu.cn/_wx/_wx_home_news_i.aspx?iid=637286054938012864" target="_blank">Tang Liu</a>, and my B.E. degree from the School of Mathematical Sciences at
+      Sichuan Normal University in 2020.
+    </p>
+    <p>
+      My research focuses on <strong>wireless charging networks</strong>, including mobile
+      charging scheduling, beam steering, phased-array charging, and environment-aware
+      charging. My work has been published in leading venues such as IEEE INFOCOM,
+      IEEE TMC, IEEE/ACM TON, and IEEE COMST.
+    </p>
+  </section>
+
+  <!-- ===== News ===== -->
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news-list">
+      <li><span class="date">2026</span><span class="content">Our paper <em>"Environment-Aware Mobile Charging with Attenuation Effects"</em> has been accepted by INFOCOM 2026.</span></li>
+      <li><span class="date">2026</span><span class="content">Our survey <em>"Understanding Wireless Charger Networks"</em> is published in IEEE COMST (IF: 34.4).</span></li>
+      <li><span class="date">2025</span><span class="content">Our journal extension <em>"Adaptive Charging with Beam Steering"</em> is published in IEEE TMC.</span></li>
+      <li><span class="date">2024</span><span class="content">I was supported by the Postgraduate Research & Practice Innovation Program of Jiangsu Province (KYCX24_0234).</span></li>
+    </ul>
+  </section>
+
+  <!-- ===== Publications ===== -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub-group">
+      <div class="group-label">Conference Papers</div>
+      <ol class="pub-list">
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">Environment-Aware Mobile Charging with Attenuation Effects.</span><br>
+          <span class="authors"><span class="me">Meixuan Ren</span>, Tang Liu, Xiaoyu Wang, Zhao Li, and Aixin Jin.</span><br>
+          <span class="venue">Proc. of the 45th IEEE Int. Conf. on Computer Communications (INFOCOM), 2026.</span>
+          <div class="pub-links"><a href="#">[Paper]</a><a href="#">[BibTeX]</a></div>
+        </li>
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">Utilizing the Neglected Back Lobe for Mobile Charging.</span><br>
+          <span class="authors"><span class="me">Meixuan Ren</span>, Dié Wu, Jing Xue, Wenzheng Xu, Jian Peng, and Tang Liu.</span><br>
+          <span class="venue">Proc. of the 42nd IEEE Int. Conf. on Computer Communications (INFOCOM), 2023.</span>
+          <div class="pub-links"><a href="#">[Paper]</a><a href="#">[BibTeX]</a></div>
+        </li>
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">Concurrent Charging with Wave Interference.</span><br>
+          <span class="authors">Yuzhuo Ma, Dié Wu, <span class="me">Meixuan Ren</span>, Jian Peng, Jilin Yang, and Tang Liu.</span><br>
+          <span class="venue">Proc. of the 42nd IEEE Int. Conf. on Computer Communications (INFOCOM), 2023.</span>
+        </li>
+        <li>
+          <span class="tag tag-c">CCF-C</span>
+          <span class="title">Hybrid Heterogeneous Wireless Chargers Placement.</span><br>
+          <span class="authors">Sujin Hou, Peng Deng, <span class="me">Meixuan Ren</span>, Yun Xu, Yuzhang Zhu, Haipeng Dai, and Libing Wu.</span><br>
+          <span class="venue">Proc. of the 18th Int. Conf. on Wireless Artificial Intelligent Computing Systems and Applications (WASA), Springer, 2024.</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="pub-group">
+      <div class="group-label">Journal Articles</div>
+      <ol class="pub-list" start="5">
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">Self Evolving Mobile Charging Scheduling.</span><br>
+          <span class="authors">Aixin Jin#, <span class="me">Meixuan Ren#</span>, Yanyan Zhu, Dié Wu, Yuhang Zhi, Jian Peng, Tang Liu, and Hongyi Wu.</span><br>
+          <span class="venue">IEEE Transactions on Mobile Computing (TMC), 2026 (online).</span> <span style="color:#999;font-size:13px;">(# equal contribution)</span>
+        </li>
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">Adaptive Charging with Beam Steering.</span><br>
+          <span class="authors"><span class="me">Meixuan Ren</span>, Haipeng Dai, Linglin Zhang, and Tang Liu.</span><br>
+          <span class="venue">IEEE Transactions on Mobile Computing (TMC), 24(10): 11224–11240, 2025.</span>
+          <div class="pub-links"><a href="#">[Paper]</a><a href="#">[BibTeX]</a></div>
+        </li>
+        <li>
+          <span class="tag tag-if">SCI Q1 · IF 34.4</span>
+          <span class="title">Understanding Wireless Charger Networks: Concepts, Current Research, and Future Directions.</span><br>
+          <span class="authors"><span class="me">Meixuan Ren</span>, Haipeng Dai, Tang Liu, Xianjun Deng, Wanchun Dou, Yuanyuan Yang, and Guihai Chen.</span><br>
+          <span class="venue">IEEE Communications Surveys and Tutorials (COMST), 27(4): 2247–2282, 2025.</span>
+          <div class="pub-links"><a href="#">[Paper]</a><a href="#">[BibTeX]</a></div>
+        </li>
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">3D Mobile Charging with Planar Phased Array.</span><br>
+          <span class="authors">Linglin Zhang, <span class="me">Meixuan Ren</span>, Yanyan Zhu, Dié Wu, Jian Peng, Wenzheng Xu, and Tang Liu.</span><br>
+          <span class="venue">IEEE Transactions on Mobile Computing (TMC), 2026 (to appear).</span>
+        </li>
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">Utilizing the Neglected Back Lobe for Directional Charging Scheduling.</span><br>
+          <span class="authors">Tang Liu, <span class="me">Meixuan Ren</span>, Dié Wu, Jing Xue, Jingwen Li, Sun Mao, and Wenzheng Xu.</span><br>
+          <span class="venue">IEEE Transactions on Mobile Computing (TMC), 23(6): 7408–7421, 2024.</span>
+        </li>
+        <li>
+          <span class="tag tag-a">CCF-A</span>
+          <span class="title">Concurrent Charging With Wave Interference for Multiple Chargers.</span><br>
+          <span class="authors">Tang Liu, Yuzhuo Ma, <span class="me">Meixuan Ren</span>, Jin Yang, Jian Peng, J. Yang, and Dié Wu.</span><br>
+          <span class="venue">IEEE/ACM Transactions on Networking (TON), 32(3): 2525–2538, 2024.</span>
+        </li>
+        <li>
+          <span class="tag tag-b">CCF-B</span>
+          <span class="title">Practical Charger Placement Scheme for Wireless Rechargeable Sensor Networks with Obstacles.</span><br>
+          <span class="authors">Wei You, <span class="me">Meixuan Ren</span>, Yuzhuo Ma, Dié Wu, Jilin Yang, Xuxun Liu, and Tang Liu.</span><br>
+          <span class="venue">ACM Transactions on Sensor Networks (TOSN), 20(1): 1–23, 2023.</span>
+        </li>
+        <li>
+          <span class="tag tag-c">Chinese Journal</span>
+          <span class="title">Safe Placement of Multi-antenna Wireless Chargers.</span><br>
+          <span class="authors"><span class="me">Meixuan Ren</span>, Peng Deng, Yue Zhao, Xiaoyu Wang, Chao Wang, Haipeng Dai, and Libing Wu.</span><br>
+          <span class="venue">Computer Science, 51(8): 360–368, 2024.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="edu-list">
+      <li>
+        <span class="year">2023.09 – Present</span>
+        <span class="degree">Ph.D.</span>, Department of Computer Science and Technology, Nanjing University.<br>
+        <span style="color:var(--muted);font-size:14px;">Advisor: Prof. Haipeng Dai</span>
+      </li>
+      <li>
+        <span class="year">2020.09 – 2023.06</span>
+        <span class="degree">M.E.</span>, Department of Computer Science and Technology, Sichuan Normal University.<br>
+        <span style="color:var(--muted);font-size:14px;">Advisor: Prof. Tang Liu</span>
+      </li>
+      <li>
+        <span class="year">2016.09 – 2020.06</span>
+        <span class="degree">B.E.</span>, School of Mathematical Sciences, Sichuan Normal University.
+      </li>
+    </ul>
+  </section>
+
+
+</div>
+</body>
 </html>
